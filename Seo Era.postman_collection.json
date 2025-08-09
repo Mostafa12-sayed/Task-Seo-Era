@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "43bb43c0-4f86-4407-aeaa-ca62c4e1474e",
+		"name": "Seo Era",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19568977"
+	},
+	"item": [
+		{
+			"name": "user auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XML-HttpRequest",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"username\":\"mostafa sayed\",\r\n    \"email\":\"ms2413@fayoum.edu.eg\",\r\n    \"password\":\"123456789\",\r\n    \"password_confirmation\":\"123456789\",\r\n    \"mobile_number\":\"01022074789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ms2413@fayoum.edu.eg",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/auth/admin/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"admin",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "posts",
+			"item": [
+				{
+					"name": "show my posts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/posts/my-posts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"posts",
+								"my-posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvYWRtaW4vbG9naW4iLCJpYXQiOjE3MjM5OTYxMDYsImV4cCI6MTcyMzk5OTcwNiwibmJmIjoxNzIzOTk2MTA2LCJqdGkiOiI1MW1JZUZnY0Q4S29ZTnV4Iiwic3ViIjoiMiIsInBydiI6ImRmODgzZGI5N2JkMDVlZjhmZjg1MDgyZDY4NmM0NWU4MzJlNTkzYTkifQ.YFSLkb8wmdhnEKnOKNVwsRKkllZWEdbUY9d46CxI0So",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"post_id\":\"4\",\r\n    \"status\":\"reject\",\r\n    \"rejected_reason\":\"غير ملاءم\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/admin/post/status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"admin",
+								"post",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show all posts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/posts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "127.0.0.1:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk4OGVjOS04MDY1LTcxMTYtYWYxYi02ZTA4MjRmZDc1NDAiLCJqdGkiOiI3YTg0ZWRlMzk2Yzk3Mjc2MmViNDYzNjhmNTQ2MDE1NDljYzkxODM5NzM3Mzg5MjQ2MDI1Mzc4ODlmZjkyYzVhYmUyNjdmYzU1ZjBiMWE0MSIsImlhdCI6MTc1NDc0MjI1NS4yMjYyODcsIm5iZiI6MTc1NDc0MjI1NS4yMjYyOTEsImV4cCI6MTc3MDYzOTg1NS4yMTMyMjcsInN1YiI6IjIiLCJzY29wZXMiOlsicmVhZC1wb3N0cyIsImNyZWF0ZS1wb3N0cyJdfQ.dj-QtOpMUkZjh_VhOUB1tyr8p3UPqRxvDNpPg8T8k51viIfpLgWVXZBglJPAvBGrCH65UeJaZgIWEH2G1Wp4PSOyP7mlv_zhHXyresXIqSPM1PSR_-9UURunwMGfkYiBzwLtWi8ozgTav35mveIN57FqBy9gFFHsBG9fkEOOwSFNPwGYqXzQAMFpdDKVjCp6lmxlLeV_iICyVr4Zii4NPxT_cUxv4gdTLkXUeLDZWEKLEet-SbB5Ul2g6V1n86NiFM2QmxnJmcLYrzYLb4PzTCkm502_Teowkc25PJtzW3kZoh6seie0BNXktz7aCyeJnoJNiBYZvyeK1hdkqqHa3qM9ZQw6EDfJVduIzk2pQDADtsi6rAXjRshAqnPM0-5ryb29tBMKLWEwMlaceZpNiM3NURB4eeXhNTPIq3o04OTNlQOG313T53H7j4eopdeCJYN43rVgqnkrs_AUvAK6_DIgEhc1MlyE0TOmppzTx0TPAEWVijnn72Wm5kM_0nMDlh0epcueHfnLSq0IjJ7V0gN6xMH1ijikC8wnHx5A-SPmUDoiyZLaptg3Td4L8r7J0cTiJRPjYFCHxv6XrDRcJb8cXRFQqMTkKYzuqGpiArBbPKOymPkN8ra9oOtPluRfSpreEzYP-BpHxjqhh-AvOcYnbD7ghulPCF0KqPCqqjM",
+			"type": "string"
+		}
+	]
+}
